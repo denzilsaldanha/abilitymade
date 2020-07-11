@@ -47,7 +47,31 @@ def orthotist():
         for obj in orthotistsList:
             orthotistJson.append(obj.__dict__)
         return json.dumps(orthotistJson)
+@app.route('/js/script.js', methods = ['GET'])
+def javascript():
+    if request.method =='GET':
+        return render_template('/js/script.js')
 
+@app.route('/patient', methods=['POST', 'GET'])
+def patient():
+    if request.method == 'GET':
+        return render_template('patient.html')
+
+patientList = []
+
+@app.route('/patient/details', methods=['POST', 'GET'])
+def patientdetails():
+    if request.method == 'GET':
+        list_patient = []
+        for obj in patientList:
+            list_patient.append(obj.__dict__)
+            # print(list_orders)
+        return json.dumps(list_patient)
+    if request.method == 'POST':
+        patient_details = request.json
+        print(patient_details)
+        patientList.append(Patient(**patient_details))
+        return '200 OK'
 
 if __name__ == '__main__':
     app.run(debug=True)
