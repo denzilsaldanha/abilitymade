@@ -5,15 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>AFO Ordering</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
 <body>
-  <button id="button">Load Orthotist</button>
-  <button onclick ="location.href='http://127.0.0.1:5000/patient';">Patient</button>
+  <div class="jumbotron text-center">
+      <h1>AbilityMade</h1>
 
-  <br><br>
+    </div>
+   <div class = "container">
+        <div class="row">
+            <div class="col-md-4">
+                <button id="button">View Orthotist</button>
+            </div>
+          <div class="col-md-4">
+                <button onclick ="location.href='http://127.0.0.1:5000/patient';">Patient</button>
+          </div>
+          <div class="col-md-4">
+                <button onclick ="location.href='http://127.0.0.1:5000/order';">Order</button>
+          </div>
 
-  <div id="users"></div>
+        </div>
+
+    <br><br>
+    <div class="form-row text-center">
+
+        <div id="users"></div>
+    </div>
+
+  </div>
+
 
   <script >
       document.getElementById('button').addEventListener('click', loadUsers);

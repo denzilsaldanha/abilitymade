@@ -10,6 +10,12 @@ class Orthotist:
         self.practiceAddress = Orthotist['practiceAddress']
         self.practicePh = Orthotist['practicePh']
         self.orthotistName = Orthotist['orthotistName']
+class Patient:
+    def __init__(self, **patient):
+        self.patientName = patient['patientName']
+        self.patientAddr = patient['patientAddr']
+        self.patientPh = patient['patientPh']
+
 
 
 # List of Orthotists
@@ -59,18 +65,27 @@ def patient():
 
 patientList = []
 
-@app.route('/patient/details', methods=['POST', 'GET'])
+@app.route('/patient/details', methods=['POST', 'GET','PUT'])
 def patientdetails():
     if request.method == 'GET':
         list_patient = []
         for obj in patientList:
             list_patient.append(obj.__dict__)
             # print(list_orders)
+            print(obj.__dict__)
         return json.dumps(list_patient)
     if request.method == 'POST':
         patient_details = request.json
         print(patient_details)
         patientList.append(Patient(**patient_details))
+        return '200 OK'
+    if request.method =='PUT':
+        patientdetails = request.json
+        print(patientdetails)
+        for obj in patientList:
+            if obj.patientName == patientdetails['patientName']:
+                obj.patientAddr = patientdetails['patientAddr']
+                obj.patientPh = patientdetails['patientPh']
         return '200 OK'
 
 if __name__ == '__main__':
