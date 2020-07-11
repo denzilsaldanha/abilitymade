@@ -5,3 +5,6 @@ Flask is the only dependecy required to run this program which can be installed 
   pip install flask
   
 Once the code runs open the browser and go to 127.0.0.1:5000
+
+
+I haven't done any checks on the inputs and the order page is incomplete
