@@ -53,15 +53,35 @@ def orthotist():
         for obj in orthotistsList:
             orthotistJson.append(obj.__dict__)
         return json.dumps(orthotistJson)
+
+
+@app.route('/orthotist/name', methods = ['GET'])
+def orthonames():
+    if request.method =='GET':
+        namesjson =[]
+        for obj in orthotistsList:
+            print('Here')
+            namesjson.append(obj.orthotistName.__dict__)
+        print(namesjson)
+        return namesjson
+
+
+
 @app.route('/js/script.js', methods = ['GET'])
 def javascript():
     if request.method =='GET':
         return render_template('/js/script.js')
 
-@app.route('/patient', methods=['POST', 'GET'])
+@app.route('/patient', methods=['GET'])
 def patient():
     if request.method == 'GET':
         return render_template('patient.html')
+
+
+@app.route('/order', methods=['GET'])
+def order():
+    if request.method == 'GET':
+        return render_template('order.html')
 
 patientList = []
 
